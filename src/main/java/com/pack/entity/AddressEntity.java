@@ -1,9 +1,11 @@
 package com.pack.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 
 @Entity
 public class AddressEntity {
@@ -17,7 +19,8 @@ public class AddressEntity {
 	private String state;
 	private boolean activation;
 	
-	@ManyToOne
+
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private UserEntity userEntity;
 
@@ -104,6 +107,8 @@ public class AddressEntity {
 		this.state = state;
 		this.activation = activation;
 		this.userEntity = userEntity;
+		
+		
 	}
 	
 	
@@ -112,12 +117,12 @@ public class AddressEntity {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "AddressEntity [id=" + id + ", address1=" + address1 + ", address2=" + address2 + ", city=" + city
-				+ ", pincode=" + pincode + ", landmark=" + landmark + ", state=" + state + ", activation=" + activation
-				+ ", userEntity=" + userEntity + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "AddressEntity [id=" + id + ", address1=" + address1 + ", address2=" + address2 + ", city=" + city
+//				+ ", pincode=" + pincode + ", landmark=" + landmark + ", state=" + state + ", activation=" + activation
+//				+ ", userEntity=" + userEntity + "]";
+//	}
 	
 	
 	

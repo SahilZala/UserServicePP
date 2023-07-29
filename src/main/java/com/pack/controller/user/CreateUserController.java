@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pack.dao.UserDao;
+import com.pack.entity.Response;
 import com.pack.entity.UserEntity;
 import com.pack.util.APIPaths;
 
@@ -17,7 +18,7 @@ public class CreateUserController {
 	@Autowired
 	UserDao userDao;
 	@PostMapping(APIPaths.CREATE_USER)
-	public ResponseEntity<UserEntity> createUserController(@RequestBody UserEntity user){
-		return new ResponseEntity<>(userDao.createUser(user),HttpStatus.OK);
+	public ResponseEntity<Response> createUserController(@RequestBody UserEntity user){
+		return new ResponseEntity<>(new Response(HttpStatus.OK.value(),"",userDao.createUser(user)),HttpStatus.OK);
 	}
 }

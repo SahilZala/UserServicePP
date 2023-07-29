@@ -2,6 +2,7 @@ package com.pack.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -19,7 +20,7 @@ public class UserEntity {
 	private String role;
 	private boolean activation;
 	
-	@OneToMany( mappedBy = "userEntity")
+	@OneToMany( mappedBy = "userEntity",cascade = CascadeType.ALL)
 	private List<AddressEntity> address;
 	
 	public String getId() {
@@ -84,12 +85,14 @@ public class UserEntity {
 		this.activation = activation;
 		this.address = address;
 	}
-	@Override
-	public String toString() {
-		return "UserEntity [id=" + id + ", userName=" + userName + ", emailId=" + emailId + ", password=" + password
-				+ ", mobileNumber=" + mobileNumber + ", role=" + role + ", activation=" + activation + ", address="
-				+ address + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "UserEntity [id=" + id + ", userName=" + userName + ", emailId=" + emailId + ", password=" + password
+//				+ ", mobileNumber=" + mobileNumber + ", role=" + role + ", activation=" + activation + ", address="
+//				+ address + "]";
+//	}
+	
+	
 	
 	public UserEntity(String id, String userName, String emailId, String password, String mobileNumber, String role,
 			boolean activation) {

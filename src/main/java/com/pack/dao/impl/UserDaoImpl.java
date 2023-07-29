@@ -26,4 +26,9 @@ public class UserDaoImpl implements UserDao{
 	public List<UserEntity> getAllUser() {
 		return userService.getAllUser();
 	}
+
+	@Override
+	public UserEntity getUserByEmailId(String emailId) {
+		return userService.getUserByEmailId(emailId);
+	}
 }
